@@ -17,7 +17,8 @@ return {
 					"ts_ls",
 					"gopls",
 					"svelte",
-					"stylua",
+                    "rust_analyzer",
+--					"stylua",
 				},
 			})
 		end,
@@ -57,6 +58,15 @@ return {
 			lspconfig.cssls.setup({
 				capabilities = lsp_capabilities,
             })
+
+            -- for rust development
+            lspconfig.rust_analyzer.setup({
+                capabilities = lsp_capabilities,
+                on_attach = function (client)
+                    client.server_capabilities.documentFormattingProvider = true
+                end
+            })
+
 
 			-- lsp lua
 			lspconfig.lua_ls.setup({
