@@ -18,7 +18,6 @@ return {
 					"gopls",
 					"svelte",
                     "rust_analyzer",
---					"stylua",
 				},
 			})
 		end,
@@ -113,7 +112,7 @@ return {
             vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 
             opts.desc = "Hover to code"
-            vim.keymap.set("n", 'K', vim.lsp.hover, opts)
+            vim.keymap.set("n", 'K', vim.lsp.buf.hover, opts)
 
             opts.desc = "Goto prev docs code"
 			vim.keymap.set("n", "<C-p>", vim.diagnostic.goto_prev, opts)
